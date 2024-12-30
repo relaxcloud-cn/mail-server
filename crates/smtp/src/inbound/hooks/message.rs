@@ -181,6 +181,7 @@ impl<T: SessionStream> Session<T> {
         let (tls_version, tls_cipher) = self.stream.tls_version_and_cipher();
         let request = Request {
             context: Context {
+                session_id: queue_id.map(|id| id.into()).unwrap_or(0),
                 stage: stage.into(),
                 client: Client {
                     ip: self.data.remote_ip.to_string(),

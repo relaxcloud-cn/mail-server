@@ -21,6 +21,7 @@ pub struct Request {
 
 #[derive(Serialize, Deserialize)]
 pub struct Context {
+    pub session_id: u64,
     pub stage: Stage,
     pub client: Client,
     #[serde(skip_serializing_if = "Option::is_none")]
