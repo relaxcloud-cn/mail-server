@@ -244,7 +244,7 @@ impl<T: SessionStream> Session<T> {
                     })
                     .collect(),
                 server_headers: vec![],
-                contents: String::from_utf8_lossy(message.raw_body()).into_owned(),
+                contents: String::from_utf8_lossy(&self.data.message).into_owned(),
                 size: message.raw_message().len(),
             }),
         };
