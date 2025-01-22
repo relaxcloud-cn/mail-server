@@ -181,6 +181,7 @@ impl<T: SessionStream> Session<T> {
         let (tls_version, tls_cipher) = self.stream.tls_version_and_cipher();
         let request = Request {
             context: Context {
+                session_id: queue_id.map(|id| id.into()).unwrap_or(0),
                 stage: stage.into(),
                 client: Client {
                     ip: self.data.remote_ip.to_string(),
@@ -244,7 +245,7 @@ impl<T: SessionStream> Session<T> {
                     })
                     .collect(),
                 server_headers: vec![],
-                contents: String::from_utf8_lossy(message.raw_body()).into_owned(),
+                contents:String::from_utf8_lossy(message.raw_message()).into_owned(),
                 size: message.raw_message().len(),
             }),
         };
