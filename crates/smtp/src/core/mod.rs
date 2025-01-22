@@ -64,7 +64,7 @@ pub struct Session<T: AsyncWrite + AsyncRead> {
     pub params: SessionParameters,
     pub in_flight: Vec<InFlight>,
 }
-
+#[derive(Clone)]
 pub struct SessionData {
     pub session_id: u64,
     pub local_ip: IpAddr,
