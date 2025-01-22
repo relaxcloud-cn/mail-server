@@ -5,7 +5,7 @@ name: Build
 on:
   workflow_dispatch:
   push:
-    tags: ["v*.*.*"]
+    tags: ["v*.*.*.relaxcloud"]
 
 jobs:
   build:
